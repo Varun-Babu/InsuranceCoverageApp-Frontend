@@ -1,0 +1,44 @@
+<body class="d-flex align-items-center justify-content-center"
+    style=" min-height: 100vh; background: linear-gradient(to bottom, #ffcc00, #ff6600)">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-dark text-white">
+                        <h2 class="text-center">Login</h2>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="loginForm">
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text"
+                                        formControlName="username"
+                                        class="form-control" id="username"
+                                        placeholder="Enter your username">
+                                </div>
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">*Username
+                                is required</small>
+                            <div class="form-group pt-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password"
+                                    formControlName="password"
+                                    class="form-control" id="password"
+                                    placeholder="Enter your password">
+                            </div>
+                            <small
+                                *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                                class="text-danger">*Password is required</small>
+
+                            <div class="text-center mt-3">
+                                <button (click)="onLogin()" type="submit"
+                                    class="btn btn-dark btn-block">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card mt-4">
+      <div class="card-body">
+        <h2 class="card-title">Add Policy Number</h2>
+        <form (ngSubmit)="onSubmit()" class="mt-4">
+          <div class="form-group">
+            <label for="policyNumber">Policy Number:</label>
+            <input type="number" id="policyNumber" name="policyNumber" [(ngModel)]="policyNumber" class="form-control mb-3" required>
+          </div>
+          <div class="form-group">
+            <label for="chassisNumber">Chassis Number:</label>
+            <input type="text" id="chassisNumber" name="chassisNumber" [(ngModel)]="chassisNumber" class="form-control" required>
+          </div>
+          <div class="text-center mt-3"> 
+            <button type="submit" class="btn btn-dark">Add Policy Number</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  

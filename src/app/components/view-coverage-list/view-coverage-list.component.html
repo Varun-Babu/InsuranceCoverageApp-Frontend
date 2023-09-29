@@ -1,0 +1,37 @@
+<div class="container">
+    <h3>Select Policy Number</h3>
+    <div class="row">
+        <div class="col-md-4">
+          <select [(ngModel)]="selectedPolicyNumber" (change)="onPolicyNumberSelected()" class="form-control" placeholder="Select a Policy Number">
+            <option *ngFor="let policy of policyNumbers" [value]="policy.policyNumber">{{ policy.policyNumber }}</option>
+          </select>
+        </div>
+      
+      <div class="col-md-4">
+        <button class="btn btn-danger" (click)="onDeletePolicyNumber(selectedPolicyNumber)" [disabled]="!selectedPolicyNumber">Delete Policy Number</button>
+      </div>
+    </div>
+  
+    <div *ngIf="selectedPolicyNumber !== null && coverageData.length > 0" class="mt-4">
+      <h4>Coverage Details</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Coverage Name</th>
+            <th>Coverage Code</th>
+            <th>Effective Date</th>
+            <th>Expiration Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let coverage of coverageData">
+            <td>{{ coverage.coverageName }}</td>
+            <td>{{ coverage.covCd }}</td>
+            <td>{{ coverage.effectiveDt | date }}</td>
+            <td>{{ coverage.expirationDt | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
