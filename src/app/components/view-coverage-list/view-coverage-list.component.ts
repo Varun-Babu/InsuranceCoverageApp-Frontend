@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/services/policy.service';
 
 
 @Component({
@@ -18,10 +18,13 @@ export class ViewCoverageListComponent {
   constructor(private api:ApiService, private location: Location) {}
 
   ngOnInit(): void {
-    this.api.getPolicyNumbers(1)
+
+    var id = localStorage.getItem('userId');
+    var userId: number = parseInt(id || '0', 10);
+    
+    this.api.getPolicyNumbers(userId)
     .subscribe({
       next:(response) =>{
-        console.log(response)
         this.policyNumbers = response;
       },
       error: (response)=>{
@@ -35,8 +38,6 @@ export class ViewCoverageListComponent {
       this.api.getCoverage(this.selectedPolicyNumber)
         .subscribe((coverageDataa: any) => {
           this.coverageData = coverageDataa;
-          console.log(this.selectedPolicyNumber)
-          console.log('Coverage data:', coverageDataa);
         });
     }
   }
@@ -47,13 +48,10 @@ export class ViewCoverageListComponent {
       this.api.deletePolicyNumber(policyNumber)
         .subscribe(
           () => {
-            // Policy number deleted successfully
             console.log(`Policy number ${policyNumber} deleted.`);
             window.location.reload();
-            // You can update the component's state or perform other actions as needed
           },
           (error) => {
-            // Handle the error if deletion fails
             console.error( error);
           }
         );

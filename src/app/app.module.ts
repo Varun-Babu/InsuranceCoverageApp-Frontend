@@ -8,10 +8,14 @@ import { AddPolicyNoComponent } from './components/add-policy-no/add-policy-no.c
 import { ViewCoverageListComponent } from './components/view-coverage-list/view-coverage-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
-import { DashboardNavbarComponent } from './dashboard-navbar/dashboard-navbar.component';
+import { DashboardNavbarComponent } from './components/dashboard-navbar/dashboard-navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+
+
 
 
 @NgModule({
@@ -21,7 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddPolicyNoComponent,
     ViewCoverageListComponent,
     DashboardComponent,
-    DashboardNavbarComponent
+    DashboardNavbarComponent,
+    FooterComponent,
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
