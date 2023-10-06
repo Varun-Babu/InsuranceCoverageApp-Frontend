@@ -26,11 +26,9 @@ export class ViewCoverageListComponent {
     .subscribe({
       
       next:(response) =>{
-        console.log(response)
         this.policyNumbers = response;
       },
       error: (response)=>{
-        console.log(response)
       }
     })
   }
@@ -39,7 +37,6 @@ export class ViewCoverageListComponent {
     if (this.selectedPolicyNumber) {
       this.api.getCoverage(this.selectedPolicyNumber)
         .subscribe((coverageDataa: any) => {
-          console.log(coverageDataa)
           this.coverageData = coverageDataa;
         });
     }
@@ -51,7 +48,6 @@ export class ViewCoverageListComponent {
       this.api.deletePolicyNumber(policyNumber)
         .subscribe(
           () => {
-            console.log(`Policy number ${policyNumber} deleted.`);
             window.location.reload();
           },
           (error) => {

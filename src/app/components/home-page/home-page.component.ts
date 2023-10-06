@@ -35,7 +35,6 @@ export class HomePageComponent implements OnInit {
           this.router.navigate(['dashboard'])
         },
         error:(error)=>{
-          console.log("Error:", error);
           alert(error?.error.message);
       ValidateForms.validateAllFormFields(this.loginForm);
 
