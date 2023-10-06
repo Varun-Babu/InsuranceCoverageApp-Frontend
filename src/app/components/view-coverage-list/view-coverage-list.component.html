@@ -12,15 +12,13 @@
                   No policy numbers found.
               </div>
           </ng-template>
-      </div>
-  
-      
+      </div>   
       <div class="col-md-4">
         <button class="btn btn-danger" (click)="onDeletePolicyNumber(selectedPolicyNumber)" [disabled]="!selectedPolicyNumber">Delete Policy Number</button>
       </div>
     </div>
   
-    <div class="mt-4">
+    <div class="mt-4" *ngIf="selectedPolicyNumber">
       <h4>Coverage Details</h4>
       <table class="table table-striped">
         <thead>
