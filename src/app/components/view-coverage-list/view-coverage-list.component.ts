@@ -10,9 +10,9 @@ import { ApiService } from 'src/app/services/policy.service';
 })
 export class ViewCoverageListComponent {
 
-  policyNumbers: any[] = [];
+  policyNumbers: any = {};
   selectedPolicyNumber!: number;
-  coverageData: any[] = [];
+  coverageData: any = {};
   displayedColumns: string[] = ['coverageName', 'covCd', 'effectiveDt', 'expirationDt'];
 
   constructor(private api:ApiService, private location: Location) {}
@@ -21,10 +21,12 @@ export class ViewCoverageListComponent {
 
     var id = localStorage.getItem('userId');
     var userId: number = parseInt(id || '0', 10);
-    
+
     this.api.getPolicyNumbers(userId)
     .subscribe({
+      
       next:(response) =>{
+        console.log(response)
         this.policyNumbers = response;
       },
       error: (response)=>{
@@ -37,6 +39,7 @@ export class ViewCoverageListComponent {
     if (this.selectedPolicyNumber) {
       this.api.getCoverage(this.selectedPolicyNumber)
         .subscribe((coverageDataa: any) => {
+          console.log(coverageDataa)
           this.coverageData = coverageDataa;
         });
     }
